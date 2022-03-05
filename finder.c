@@ -1,4 +1,3 @@
-
 #include "cubiomes/finders.h"
 #include "cubiomes/generator.h"
 #include "cubiomes/layers.h"
