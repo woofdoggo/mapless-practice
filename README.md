@@ -9,7 +9,11 @@ spawn. It does no filtering to ensure that there are no other nearby
 structures which may show up as false positives on the pie chart.
 
 If you need a lot of mapless practice seeds, this is far faster than
-running the JustLearnTreasure filter on repl.it.
+running the JustLearnTreasure filter on repl.it. Here's a demo,
+running on a single core on a Ryzen 3600:
+
+<video src="https://raw.githubusercontent.com/woofdoggo/mapless-practice/main/assets/output.mp4" width="100%">
+</video>
 
 # Building
 Ensure that you have GNU make and a C compiler toolchain installed.
