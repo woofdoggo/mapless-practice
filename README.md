@@ -12,8 +12,7 @@ If you need a lot of mapless practice seeds, this is far faster than
 running the JustLearnTreasure filter on repl.it. Here's a demo,
 running on a single core on a Ryzen 3600:
 
-<video src="https://raw.githubusercontent.com/woofdoggo/mapless-practice/main/assets/output.mp4" width="100%">
-</video>
+https://user-images.githubusercontent.com/46545045/156905004-3fdd7242-586c-456f-ada7-f83a062faad9.mp4
 
 # Building
 Ensure that you have GNU make and a C compiler toolchain installed.
