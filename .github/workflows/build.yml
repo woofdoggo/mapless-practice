@@ -15,9 +15,6 @@ jobs:
       - name: Get submodules
         run: git submodule update --init --recursive
 
-      - name: Get tar
-        run: sudo apt-get install tar
-
       - name: Get zig
         run: |
           curl https://ziglang.org/download/0.9.1/zig-linux-x86_64-0.9.1.tar.xz -o zig.tar.xz
@@ -25,7 +22,7 @@ jobs:
 
       - name: Build for Linux x86_64
         run: |
-          ./zig-linux-x86_64-0.9.1/zig cc -lm -O3 -o finder-x86_64-linux -I cubiomes finder.c \
+          ./zig-linux-x86_64-0.9.1/zig cc -lm -O3 -o mapless-x86_64-linux -I cubiomes finder.c \
               cubiomes/biome_tree.c \
               cubiomes/finders.c \
               cubiomes/generator.c \
@@ -33,14 +30,9 @@ jobs:
               cubiomes/noise.c \
               cubiomes/util.c
 
-      - name: Upload Linux x86_64
-        uses: actions/upload-artifact@v3.0.0
-        with:
-          name: main
-          path: finder-x86_64-linux
-
       - name: Publish release
-        uses: softprops/action-gh-release@v1
+        uses: ncipollo/release-action@v1
         with:
-          files: |
-            finder-x86_64-linux
+          artifacts: "mapless-x86_64-linux"
+          tag: ${{ github.sha }}
+          token: ${{ secrets.GITHUB_TOKEN }}
