@@ -38,5 +38,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "mapless-x86_64-linux"
-          tag: ${{ steps.vars.outputs.sha }}
+          tag: ${{ steps.tag.outputs.sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
