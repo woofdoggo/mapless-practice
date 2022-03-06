@@ -22,7 +22,7 @@ jobs:
 
       - name: Build for Linux x86_64
         run: |
-          ./zig-linux-x86_64-0.9.1 -lm -O3 -o finder-x86_64-linux -I cubiomes finder.c \
+          ./zig-linux-x86_64-0.9.1/zig cc -lm -O3 -o finder-x86_64-linux -I cubiomes finder.c \
               cubiomes/biome_tree.c \
               cubiomes/finders.c \
               cubiomes/generator.c \
