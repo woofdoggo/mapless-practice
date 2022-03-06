@@ -30,9 +30,13 @@ jobs:
               cubiomes/noise.c \
               cubiomes/util.c
 
+      - name: Generate tag name
+        id: tag
+        run: echo "::set-output name=sha::$(git rev-parse --short HEAD)"
+
       - name: Publish release
         uses: ncipollo/release-action@v1
         with:
           artifacts: "mapless-x86_64-linux"
-          tag: ${{ github.sha }}
+          tag: ${{ steps.vars.outputs.sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
