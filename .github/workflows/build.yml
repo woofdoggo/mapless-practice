@@ -12,6 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Get submodules
+        run: git submodule update --init --recursive
+
       - name: Get tar
         run: sudo apt-get install tar
 
