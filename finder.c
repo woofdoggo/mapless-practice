@@ -20,27 +20,30 @@ uint64_t gen_mapless(uint64_t start) {
         int rx = spawn.x / 16;
         int rz = spawn.z / 16;
 
-        // get treasure
-        if (!getStructurePos(Treasure, MC_1_16, seed, rx, rz, &pos)) {
-            continue;
-        }
-        
-        if (!isViableStructurePos(Treasure, &g, pos.x, pos.z, 0)) {
-            continue;
-        }
+        // check for treasure within 5x5 chunk grid of spawn
+        for (int i = -2; i <= 2; i++) {
+            for (int j = -2; j <= 2; j++) {
+                int cx = rx + i;
+                int cz = rz + j;
 
-        // check treasure -> spawn distance
-        int xd = abs(spawn.x - pos.x);
-        int zd = abs(spawn.z - pos.z);
-        if (xd + zd < 64) {
-            break;
+                // get treasure
+                if (!getStructurePos(Treasure, MC_1_16, seed, cx, cz, &pos)) {
+                    continue;
+                }
+
+                if (!isViableStructurePos(Treasure, &g, pos.x, pos.z, 0)) {
+                    continue;
+                }
+
+                return seed;
+            }
         }
     }
-
-    return seed;
 }
 
 int main() {
+    srand(time(NULL));
+
     while (1) {
         uint64_t seed = gen_mapless(rand());
         printf("%" PRId64 "\n", seed);
